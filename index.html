@@ -19,9 +19,12 @@
 			<h1 id="seed">WAIT</h1>
 		</div>
 		<script type="text/javascript">
-			var seed = "";
-			for(;seed.length < 81;seed += sjcl.codec.base64.fromBits(sjcl.random.randomWords(1, 10)).replace(/[^A-Z9]+/g, '')) {};
-			document.getElementById("seed").innerText = seed.substring(0,81);
+			document.getElementById("seed").innerText = genSeed();
+			function genSeed() {
+				var seed = "";
+				for(;seed.length < 81;seed += sjcl.codec.base64.fromBits(sjcl.random.randomWords(33, 10)).replace(/[^A-Z9]+/g, '')) {};
+				return seed.substring(0,81);
+			}
 		</script>
 	</body>
 </html>
